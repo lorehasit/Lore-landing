@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lore — Your engineering decisions, remembered</title>
+<meta name="description" content="Lore captures the why behind every technical decision — from closed PRs to dead Slack threads — and gives it back the instant anyone asks. Type /why in Slack and get the real answer, with sources." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ======================= NAV ======================= -->
+<header class="nav" id="nav">
+  <div class="nav-pill">
+    <a class="brand" href="#top">
+      <span class="brand-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="10.4" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M12 4.4v15.2M5.4 7.9l13.2 8.2M18.6 7.9L5.4 16.1" stroke="currentColor" stroke-width="1.25"/>
+        </svg>
+      </span>
+      Lore
+    </a>
+    <nav class="nav-links">
+      <a href="#problem">Why</a>
+      <a href="#product">Product</a>
+      <a href="#how">How it works</a>
+      <a href="#customers">Customers</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#cta" class="btn btn-ink btn-sm">Request access</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ======================= HERO ======================= -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="sun"></div>
+    <div class="haze"></div>
+  </div>
+
+  <div class="wrap hero-inner">
+    <a href="#product" class="announce" data-fade>
+      <span class="announce-tag">New</span>
+      Ask <code>/why</code> — get the real answer, with sources
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
+    </a>
+
+    <h1 class="hero-h1" id="heroH1">
+      Your engineering decisions, <em>remembered.</em>
+    </h1>
+
+    <p class="hero-lede" data-fade>
+      The why behind your architecture lives in closed PRs, dead Slack threads,
+      and the heads of people who might leave. Lore captures it — and hands
+      it back the instant anyone asks.
+    </p>
+
+    <div class="hero-cta" data-fade>
+      <a href="#cta" class="btn btn-orange btn-lg">
+        Request early access
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#how" class="btn btn-plain btn-lg">See how it works</a>
+    </div>
+
+    <div class="hero-meta" data-fade>
+      <span>2-minute setup</span><i></i><span>GitHub + Slack</span><i></i><span>Every answer cited</span>
+    </div>
+  </div>
+
+  <!-- product window -->
+  <div class="stage" data-stage>
+    <div class="chip chip-a" data-float="1"><span class="cdot"></span>PR #482 · auth-service</div>
+    <div class="chip chip-b" data-float="2"><span class="cdot"></span>#backend · Mar 12 thread</div>
+    <div class="chip chip-c" data-float="3"><span class="cdot"></span>RFC-07 · Token strategy</div>
+
+    <div class="window" data-tilt>
+      <div class="window-top">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="win-title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg> #engineering — Slack</span>
+        <span class="win-live"><span class="live-dot"></span>memory live</span>
+      </div>
+      <div class="window-body">
+        <div class="chat-q">
+          <div class="chat-av">MK</div>
+          <div>
+            <div class="chat-name">Maya K. <span>9:41 AM</span></div>
+            <div class="chat-text"><code class="why">/why</code> is auth built on short-lived tokens instead of sessions?</div>
+          </div>
+        </div>
+        <div class="chat-a" id="chatAnswer">
+          <div class="chat-av av-bot">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><path d="M12 4.5v15M5.6 8l12.8 8M18.4 8L5.6 16" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+          <div class="chat-a-main">
+            <div class="chat-name">Lore <span class="tag-app">APP</span></div>
+            <div class="chat-text typed" id="heroTyped"></div>
+            <div class="chat-srcs" id="heroSrcs">
+              <span class="src-chip">PR #482 — “Move to JWT access tokens”</span>
+              <span class="src-chip">#incidents — session-store outage</span>
+              <span class="src-chip">RFC-07 — Token lifetime</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= QUOTE MARQUEE ======================= -->
+<section class="marquee-sec">
+  <p class="marquee-label" data-fade>What engineers say once the memory kicks in</p>
+  <div class="marquee" data-marquee>
+    <div class="marquee-track">
+      <figure class="quote"><blockquote>“New hires used to ask me the same twenty questions. Now they ask Lore — with sources — and I get my afternoons back.”</blockquote><figcaption>— Staff Engineer, fintech scale-up</figcaption></figure>
+      <figure class="quote"><blockquote>“When our tech lead left, four years of hard-won context could have walked out the door with her. It didn’t.”</blockquote><figcaption>— Engineering Manager, Series B</figcaption></figure>
+      <figure class="quote"><blockquote>“We kept rebuilding things we’d already tried and abandoned. Lore remembers why we walked away the first time.”</blockquote><figcaption>— CTO, 40-person startup</figcaption></figure>
+      <figure class="quote"><blockquote>“The best part isn’t search — every answer cites the exact PR and thread. No more ‘I think it was because…’.”</blockquote><figcaption>— Principal Engineer, infra team</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PROBLEM ======================= -->
+<section class="sec" id="problem">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-fade>The problem</span>
+      <h2 class="h2 split-lines">Docs tell you <em>what.</em><br/>Nobody wrote down <em>why.</em></h2>
+      <p class="lede" data-fade>Every team runs on decisions. The reasoning behind them is the most valuable
+      knowledge a company owns — and the least protected.</p>
+    </div>
+
+    <div class="prob-grid">
+      <article class="pcard" data-card>
+        <div class="pcard-ic">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M17 8l5 5m0-5l-5 5"/></svg>
+        </div>
+        <h3>Context leaves with people</h3>
+        <p>A senior engineer resigns and four years of hard-won reasoning walks out with them. There’s no export button for judgement.</p>
+      </article>
+      <article class="pcard" data-card>
+        <div class="pcard-ic">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/><path d="M12 8v4l2.5 2.5"/><path d="M3 3l3 3M21 3l-3 3"/></svg>
+        </div>
+        <h3>The same 20 questions, every ramp</h3>
+        <p>Each new hire pulls three seniors off deep work to re-explain history that was already explained last quarter.</p>
+      </article>
+      <article class="pcard" data-card>
+        <div class="pcard-ic">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M8 11h6"/></svg>
+        </div>
+        <h3>Search finds the doc, not the decision</h3>
+        <p>Enterprise search retrieves files. The reasoning was never in a file — it was in a thread nobody can find anymore.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PRODUCT BENTO ======================= -->
+<section class="sec sec-tint" id="product">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-fade>The product</span>
+      <h2 class="h2 split-lines">Stop losing the <em>why.</em></h2>
+      <p class="lede" data-fade>Lore reads where decisions actually get made, distills the reasoning into durable
+      memory, and answers anyone who asks — no new habits to adopt.</p>
+    </div>
+
+    <div class="bento">
+      <!-- big card: capture -->
+      <article class="bcard bcard-wide" data-card>
+        <div class="bcard-copy">
+          <h3>Reasoning, captured the moment it’s created</h3>
+          <p>Each decision becomes a structured memory — what was decided, why, the trade-offs, who was involved — linked to its evidence.</p>
+          <ul class="ticks">
+            <li>Reads GitHub PRs and Slack threads</li>
+            <li>Distills decisions into structured memory</li>
+            <li>Links every answer to its source</li>
+          </ul>
+        </div>
+        <div class="bcard-visual">
+          <div class="capture-mock">
+            <div class="cap-row" data-caprow><span class="cap-src gh">PR</span><div class="cap-line"><b>#517 merged</b> — retry queue → dead-letter</div><span class="cap-st">captured</span></div>
+            <div class="cap-row" data-caprow><span class="cap-src sl">#</span><div class="cap-line"><b>#backend</b> — “DLQ. Backoff hid the outage.”</div><span class="cap-st">captured</span></div>
+            <div class="cap-row" data-caprow><span class="cap-src gh">PR</span><div class="cap-line"><b>#482</b> — short-lived JWT + refresh rotation</div><span class="cap-st">captured</span></div>
+            <div class="cap-memory">
+              <div class="cap-mem-head"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 8l14 8M19 8L5 16"/></svg> Decision memory</div>
+              <div class="cap-mem-line">Why we use a dead-letter queue <span>→ 3 sources</span></div>
+              <div class="cap-mem-line">Why auth is stateless <span>→ 4 sources</span></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- stat card -->
+      <article class="bcard bcard-stat" data-card>
+        <div class="stat-big"><span data-count="80">0</span>%</div>
+        <p>fewer repeat “why is it like this?” questions</p>
+        <div class="stat-spark" aria-hidden="true"><i style="--h:70%"></i><i style="--h:55%"></i><i style="--h:62%"></i><i style="--h:40%"></i><i style="--h:34%"></i><i style="--h:22%"></i><i style="--h:14%"></i></div>
+      </article>
+
+      <!-- stat card -->
+      <article class="bcard bcard-stat" data-card>
+        <div class="stat-big"><span data-count="10">0</span>×</div>
+        <p>faster ramp for every new hire — they answer their own questions</p>
+        <div class="stat-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+      </article>
+
+      <!-- big card: ask -->
+      <article class="bcard bcard-wide bcard-flip" data-card>
+        <div class="bcard-copy">
+          <h3>One command. The whole story.</h3>
+          <p>Type <code class="why">/why</code> in any channel and get the actual decision — trade-offs, constraints, and who fought for it. Not a keyword search: the real reasoning, sourced.</p>
+          <ul class="ticks">
+            <li>New hires ramp themselves</li>
+            <li>Seniors stop being human search engines</li>
+            <li>Judgement stays when people leave</li>
+          </ul>
+        </div>
+        <div class="bcard-visual">
+          <div class="ask-mock">
+            <div class="ask-q"><code class="why">/why</code> is payments a separate service?</div>
+            <div class="ask-a" id="askTyped"></div>
+            <div class="ask-srcs" id="askSrcs"><span>PR #311</span><span>#arch-review</span><span>Q1 outage retro</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= HOW IT WORKS ======================= -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-fade>How it works</span>
+      <h2 class="h2 split-lines">Live in one standup,<br/>valuable for <em>years.</em></h2>
+    </div>
+
+    <div class="steps" data-steps>
+      <div class="step-rail" aria-hidden="true"><span id="railFill"></span></div>
+      <article class="step" data-step>
+        <span class="step-n">01</span>
+        <h3>Connect</h3>
+        <p>Point Lore at your GitHub org and Slack workspace. Two clicks, no agents to install, nothing to migrate.</p>
+      </article>
+      <article class="step" data-step>
+        <span class="step-n">02</span>
+        <h3>Capture</h3>
+        <p>It reads PRs, reviews, and threads as they happen, distilling each decision — and updating the memory when decisions change.</p>
+      </article>
+      <article class="step" data-step>
+        <span class="step-n">03</span>
+        <h3>Ask</h3>
+        <p>Anyone types <code class="why">/why</code> and gets the reasoning back in seconds, cited. The memory — and the switching cost — compounds monthly.</p>
+      </article>
+    </div>
+
+    <!-- compounding line -->
+    <div class="compound" data-card>
+      <div class="compound-head">
+        <h3>Memory that compounds</h3>
+        <p>Month one is a nice demo. Month eighteen is your company’s institutional memory — near-impossible to rip out.</p>
+      </div>
+      <div class="compound-chart" data-chart>
+        <svg viewBox="0 0 640 220" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="curveFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fc9117" stop-opacity=".25"/>
+              <stop offset="100%" stop-color="#fc9117" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path id="curveArea" d="M20 200 C 180 196, 320 170, 430 120 S 590 30, 620 18 L 620 220 L 20 220 Z" fill="url(#curveFill)" opacity="0"/>
+          <path id="curveLine" d="M20 200 C 180 196, 320 170, 430 120 S 590 30, 620 18" fill="none" stroke="#fc9117" stroke-width="3" stroke-linecap="round"/>
+          <g id="curveDot" opacity="0"><circle cx="620" cy="18" r="6" fill="#fc9117"/><circle cx="620" cy="18" r="12" fill="#fc9117" opacity=".2"/></g>
+        </svg>
+        <div class="chart-x"><span>Month 1</span><span>Month 6</span><span>Month 18</span></div>
+        <div class="chart-note" id="chartNote">← value of the memory · switching cost</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= INTEGRATIONS ======================= -->
+<section class="sec sec-tint" id="integrations">
+  <div class="wrap integ-wrap">
+    <div class="integ-copy">
+      <span class="eyebrow" data-fade>Integrations</span>
+      <h2 class="h2 split-lines">Built on the tools where decisions <em>already happen.</em></h2>
+      <p class="lede" data-fade>No new tool to open. No new habit to build. Lore plugs into the places your team already argues, decides, and ships.</p>
+      <div class="integ-list" data-fade>
+        <span class="integ-pill on">GitHub</span>
+        <span class="integ-pill on">Slack</span>
+        <span class="integ-pill">Linear</span>
+        <span class="integ-pill">Jira</span>
+        <span class="integ-pill">Notion</span>
+      </div>
+    </div>
+    <div class="orbit-stage" data-fade>
+      <div class="orbit-core">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10.4" stroke="currentColor" stroke-width="1.6"/><path d="M12 4.4v15.2M5.4 7.9l13.2 8.2M18.6 7.9L5.4 16.1" stroke="currentColor" stroke-width="1.2"/></svg>
+      </div>
+      <div class="ring ring-1"><span class="sat s-gh">GH</span><span class="sat s-sl">Sl</span></div>
+      <div class="ring ring-2"><span class="sat s-li">Li</span><span class="sat s-ji">Ji</span><span class="sat s-no">No</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CUSTOMERS / STATS ======================= -->
+<section class="sec" id="customers">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-fade>Early teams</span>
+      <h2 class="h2 split-lines">Trusted by teams whose judgement <em>compounds.</em></h2>
+    </div>
+    <div class="cust-grid">
+      <article class="ccard" data-card>
+        <div class="ccard-stat"><span data-count="63">0</span>%</div>
+        <p class="ccard-cap">drop in repeat questions to senior engineers within the first month</p>
+        <blockquote>“Our team’s context used to live in three people’s heads. Now it lives somewhere it can’t quit.”</blockquote>
+      </article>
+      <article class="ccard ccard-mid" data-card>
+        <div class="ccard-stat"><span data-count="6">0</span>/7</div>
+        <p class="ccard-cap">onboarding questions answered without pulling anyone off deep work</p>
+        <blockquote>“Setup was two integrations and done. Within a week, new hires were answering their own questions.”</blockquote>
+      </article>
+      <article class="ccard" data-card>
+        <div class="ccard-stat">&lt;<span data-count="2">0</span>s</div>
+        <p class="ccard-cap">from <code class="why">/why</code> to a sourced answer — instead of a Slack-archaeology dig</p>
+        <blockquote>“Every answer shows its work. That’s what made the team actually trust it.”</blockquote>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FAQ ======================= -->
+<section class="sec sec-tint" id="faq">
+  <div class="wrap faq-wrap">
+    <div class="faq-left">
+      <span class="eyebrow" data-fade>FAQ</span>
+      <h2 class="h2 split-lines">Fair <em>questions.</em></h2>
+      <p class="lede" data-fade>Everything an eng lead asks us on the first call.</p>
+    </div>
+    <div class="faq-list">
+      <details class="qa" data-card open>
+        <summary>Why decision memory instead of a wiki?<span class="qa-x"></span></summary>
+        <div class="qa-a"><p>Wikis demand discipline no team sustains — and the “why” is almost never written down in the first place. Lore captures reasoning automatically, in the medium where it’s actually created, and keeps it current as decisions change.</p></div>
+      </details>
+      <details class="qa" data-card>
+        <summary>How is this different from enterprise search?<span class="qa-x"></span></summary>
+        <div class="qa-a"><p>Search retrieves documents. The reasoning was never in a document — it’s scattered across PRs, threads, and retros. Lore reconstructs the decision itself: what, why, trade-offs, people — each linked to its evidence.</p></div>
+      </details>
+      <details class="qa" data-card>
+        <summary>What does it read, exactly?<span class="qa-x"></span></summary>
+        <div class="qa-a"><p>GitHub pull requests, reviews, and merge discussions, plus the Slack channels you point it at. Linear, Jira, and Notion are on the roadmap. You control the scope, channel by channel.</p></div>
+      </details>
+      <details class="qa" data-card>
+        <summary>Is our code and data private?<span class="qa-x"></span></summary>
+        <div class="qa-a"><p>Yes. Each team gets its own isolated memory store, everything is encrypted in transit and at rest, and your data is never used to train shared models. Answers are grounded only in your team’s own sources.</p></div>
+      </details>
+      <details class="qa" data-card>
+        <summary>What if an answer is wrong or stale?<span class="qa-x"></span></summary>
+        <div class="qa-a"><p>Every answer cites its sources, so it can be checked in one click. When a decision changes — a new PR, a reversal in a thread — the memory updates, and the old answer is superseded, not silently kept.</p></div>
+      </details>
+      <details class="qa" data-card>
+        <summary>Who's behind this?<span class="qa-x"></span></summary>
+        <div class="qa-a"><p>A small founding team of engineers who got tired of being their team’s tribal-knowledge hotline. Design partners are onboarded by hand, with founding pricing locked in.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FINAL CTA ======================= -->
+<section class="final" id="cta">
+  <div class="wrap">
+    <div class="final-card" data-card>
+      <div class="final-glow" aria-hidden="true"></div>
+      <span class="eyebrow eyebrow-light" data-fade>Design-partner beta</span>
+      <h2 class="final-h2 split-lines">A company that never forgets why it built what it built.</h2>
+      <p class="final-lede" data-fade>We’re onboarding a handful of teams by hand. Founding pricing, direct line to the founders, memory from week one.</p>
+      <form class="final-form" id="waitlist" data-fade>
+        <input type="email" required placeholder="you@yourteam.com" aria-label="Work email" />
+        <button class="btn btn-orange btn-lg" type="submit">Request access</button>
+      </form>
+      <p class="final-note" id="formNote">No spam — just early access, when your team is up.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="footer">
+  <div class="wrap foot-inner">
+    <div class="foot-brand">
+      <a class="brand brand-ink" href="#top">
+        <span class="brand-mark">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10.4" stroke="currentColor" stroke-width="1.7"/><path d="M12 4.4v15.2M5.4 7.9l13.2 8.2M18.6 7.9L5.4 16.1" stroke="currentColor" stroke-width="1.25"/></svg>
+        </span>
+        Lore
+      </a>
+      <p>Institutional memory for engineering teams.</p>
+      <span class="status"><span class="status-dot"></span>All systems operational</span>
+    </div>
+    <div class="foot-col">
+      <h5>Product</h5>
+      <a href="#problem">Why Lore</a>
+      <a href="#product">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#integrations">Integrations</a>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <a href="#customers">Customers</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cta">Request access</a>
+    </div>
+    <div class="foot-col">
+      <h5>Legal</h5>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Security</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2026 Lore, Inc.</span>
+    <span class="foot-tag">Stop losing the <em>why.</em></span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
