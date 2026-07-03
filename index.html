@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Lore — Your engineering decisions, remembered</title>
-<meta name="description" content="Lore captures the why behind every technical decision — from closed PRs to dead Slack threads — and gives it back the instant anyone asks. Type /why in Slack and get the real answer, with sources." />
+<meta name="description" content="Lore captures the why behind every technical decision — from closed PRs to dead Slack threads — and gives it back the instant anyone asks. Ask /lore in your editor, terminal, or on the PR — with sources." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
@@ -26,9 +26,9 @@
     </a>
     <nav class="nav-links">
       <a href="#problem">Why</a>
-      <a href="#product">Product</a>
+      <a href="#surfaces">Product</a>
       <a href="#how">How it works</a>
-      <a href="#customers">Customers</a>
+      <a href="docs.html">Docs</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a href="#cta" class="btn btn-ink btn-sm">Request access</a>
@@ -47,7 +47,7 @@
   <div class="wrap hero-inner">
     <a href="#product" class="announce" data-fade>
       <span class="announce-tag">New</span>
-      Ask <code>/why</code> — get the real answer, with sources
+      Ask <code>/lore</code> — get the real answer, with sources
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg>
     </a>
 
@@ -70,7 +70,7 @@
     </div>
 
     <div class="hero-meta" data-fade>
-      <span>2-minute setup</span><i></i><span>GitHub + Slack</span><i></i><span>Every answer cited</span>
+      <span>2-minute setup</span><i></i><span>GitHub · VS Code · CLI</span><i></i><span>Every answer cited</span>
     </div>
   </div>
 
@@ -83,7 +83,7 @@
     <div class="window" data-tilt>
       <div class="window-top">
         <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
-        <span class="win-title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg> #engineering — Slack</span>
+        <span class="win-title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg> lore · recall</span>
         <span class="win-live"><span class="live-dot"></span>memory live</span>
       </div>
       <div class="window-body">
@@ -91,7 +91,7 @@
           <div class="chat-av">MK</div>
           <div>
             <div class="chat-name">Maya K. <span>9:41 AM</span></div>
-            <div class="chat-text"><code class="why">/why</code> is auth built on short-lived tokens instead of sessions?</div>
+            <div class="chat-text"><code class="why">/lore</code> is auth built on short-lived tokens instead of sessions?</div>
           </div>
         </div>
         <div class="chat-a" id="chatAnswer">
@@ -115,13 +115,13 @@
 
 <!-- ======================= QUOTE MARQUEE ======================= -->
 <section class="marquee-sec">
-  <p class="marquee-label" data-fade>What engineers say once the memory kicks in</p>
+  <p class="marquee-label" data-fade>What changes once the memory kicks in</p>
   <div class="marquee" data-marquee>
     <div class="marquee-track">
-      <figure class="quote"><blockquote>“New hires used to ask me the same twenty questions. Now they ask Lore — with sources — and I get my afternoons back.”</blockquote><figcaption>— Staff Engineer, fintech scale-up</figcaption></figure>
-      <figure class="quote"><blockquote>“When our tech lead left, four years of hard-won context could have walked out the door with her. It didn’t.”</blockquote><figcaption>— Engineering Manager, Series B</figcaption></figure>
-      <figure class="quote"><blockquote>“We kept rebuilding things we’d already tried and abandoned. Lore remembers why we walked away the first time.”</blockquote><figcaption>— CTO, 40-person startup</figcaption></figure>
-      <figure class="quote"><blockquote>“The best part isn’t search — every answer cites the exact PR and thread. No more ‘I think it was because…’.”</blockquote><figcaption>— Principal Engineer, infra team</figcaption></figure>
+      <figure class="quote"><blockquote>New hires stop asking the same twenty questions — they ask Lore, get a sourced answer, and your seniors keep their afternoons.</blockquote><figcaption>Faster onboarding</figcaption></figure>
+      <figure class="quote"><blockquote>When a tech lead leaves, four years of hard-won context doesn’t walk out the door with them.</blockquote><figcaption>Knowledge that stays</figcaption></figure>
+      <figure class="quote"><blockquote>No more rebuilding what you already tried and abandoned — Lore remembers why you walked away the first time.</blockquote><figcaption>Less rework</figcaption></figure>
+      <figure class="quote"><blockquote>Every answer cites the exact PR — so the team trusts it instead of guessing “I think it was because…”.</blockquote><figcaption>Answers you can trust</figcaption></figure>
     </div>
   </div>
 </section>
@@ -216,7 +216,7 @@
       <article class="bcard bcard-wide bcard-flip" data-card>
         <div class="bcard-copy">
           <h3>One command. The whole story.</h3>
-          <p>Type <code class="why">/why</code> in any channel and get the actual decision — trade-offs, constraints, and who fought for it. Not a keyword search: the real reasoning, sourced.</p>
+          <p>Type <code class="why">/lore</code> in your editor, terminal, or on the PR and get the actual decision — trade-offs, constraints, and who fought for it. Not a keyword search: the real reasoning, sourced.</p>
           <ul class="ticks">
             <li>New hires ramp themselves</li>
             <li>Seniors stop being human search engines</li>
@@ -225,7 +225,7 @@
         </div>
         <div class="bcard-visual">
           <div class="ask-mock">
-            <div class="ask-q"><code class="why">/why</code> is payments a separate service?</div>
+            <div class="ask-q"><code class="why">/lore</code> is payments a separate service?</div>
             <div class="ask-a" id="askTyped"></div>
             <div class="ask-srcs" id="askSrcs"><span>PR #311</span><span>#arch-review</span><span>Q1 outage retro</span></div>
           </div>
@@ -248,17 +248,17 @@
       <article class="step" data-step>
         <span class="step-n">01</span>
         <h3>Connect</h3>
-        <p>Point Lore at your GitHub org and Slack workspace. Two clicks, no agents to install, nothing to migrate.</p>
+        <p>Install the Lore GitHub App on your repos — and, optionally, the Scribe commit hook. Two clicks, nothing to migrate.</p>
       </article>
       <article class="step" data-step>
         <span class="step-n">02</span>
         <h3>Capture</h3>
-        <p>It reads PRs, reviews, and threads as they happen, distilling each decision — and updating the memory when decisions change.</p>
+        <p>Every merged pull request — and any commit with a <code class="why">Why:</code> line — is distilled into the Canon automatically. Nobody writes a doc.</p>
       </article>
       <article class="step" data-step>
         <span class="step-n">03</span>
-        <h3>Ask</h3>
-        <p>Anyone types <code class="why">/why</code> and gets the reasoning back in seconds, cited. The memory — and the switching cost — compounds monthly.</p>
+        <h3>Recall</h3>
+        <p>Anyone types <code class="why">/lore</code> in the editor, the terminal, or asks — and gets the reasoning back in seconds, cited.</p>
       </article>
     </div>
 
@@ -287,27 +287,37 @@
   </div>
 </section>
 
-<!-- ======================= INTEGRATIONS ======================= -->
-<section class="sec sec-tint" id="integrations">
-  <div class="wrap integ-wrap">
-    <div class="integ-copy">
-      <span class="eyebrow" data-fade>Integrations</span>
-      <h2 class="h2 split-lines">Built on the tools where decisions <em>already happen.</em></h2>
-      <p class="lede" data-fade>No new tool to open. No new habit to build. Lore plugs into the places your team already argues, decides, and ships.</p>
-      <div class="integ-list" data-fade>
-        <span class="integ-pill on">GitHub</span>
-        <span class="integ-pill on">Slack</span>
-        <span class="integ-pill">Linear</span>
-        <span class="integ-pill">Jira</span>
-        <span class="integ-pill">Notion</span>
-      </div>
+<!-- ======================= SURFACES ======================= -->
+<section class="sec sec-tint" id="surfaces">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-fade>Ways to use it</span>
+      <h2 class="h2 split-lines">Ask <em>/lore</em> wherever you work.</h2>
+      <p class="lede" data-fade>One memory, three surfaces — your editor, your terminal, and the pull request itself. Every answer cited.</p>
     </div>
-    <div class="orbit-stage" data-fade>
-      <div class="orbit-core">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10.4" stroke="currentColor" stroke-width="1.6"/><path d="M12 4.4v15.2M5.4 7.9l13.2 8.2M18.6 7.9L5.4 16.1" stroke="currentColor" stroke-width="1.2"/></svg>
-      </div>
-      <div class="ring ring-1"><span class="sat s-gh">GH</span><span class="sat s-sl">Sl</span></div>
-      <div class="ring ring-2"><span class="sat s-li">Li</span><span class="sat s-ji">Ji</span><span class="sat s-no">No</span></div>
+
+    <div class="prob-grid">
+      <article class="pcard" data-card>
+        <div class="pcard-ic">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M3 15l6-3-6-3v6ZM12 18h9"/></svg>
+        </div>
+        <h3>VS Code extension</h3>
+        <p>A <code class="why">/lore</code> side-panel in your editor. Or select code → <em>“Why is this here?”</em> → the reasoning, cited to the exact PR.</p>
+      </article>
+      <article class="pcard" data-card>
+        <div class="pcard-ic">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 9l3 3-3 3M13 15h5"/></svg>
+        </div>
+        <h3>Terminal app</h3>
+        <p>Run <code class="why">lore</code> for a full-screen prompt, or <code class="why">lore recall "…"</code> in a script. One <code class="why">npm i -g</code> and go.</p>
+      </article>
+      <article class="pcard" data-card>
+        <div class="pcard-ic">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.5a3 3 0 0 0-.8-2.3c2.7-.3 5.5-1.3 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.5 11.5 0 0 0-6 0C6.9 2.7 5.9 3 5.9 3a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.5 9.4c0 4.6 2.8 5.6 5.5 6a3 3 0 0 0-.8 2.3V21"/></svg>
+        </div>
+        <h3>GitHub App</h3>
+        <p>Install once. Every <strong>merged PR is captured automatically</strong> — signed, verified, and turned into a Why. No one has to remember to do anything.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -316,24 +326,25 @@
 <section class="sec" id="customers">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow" data-fade>Early teams</span>
-      <h2 class="h2 split-lines">Trusted by teams whose judgement <em>compounds.</em></h2>
+      <span class="eyebrow" data-fade>The outcome</span>
+      <h2 class="h2 split-lines">What good looks like when judgement <em>compounds.</em></h2>
+      <p class="lede" data-fade>The targets we build Lore around — illustrative of the problem it solves, not audited results.</p>
     </div>
     <div class="cust-grid">
       <article class="ccard" data-card>
         <div class="ccard-stat"><span data-count="63">0</span>%</div>
-        <p class="ccard-cap">drop in repeat questions to senior engineers within the first month</p>
-        <blockquote>“Our team’s context used to live in three people’s heads. Now it lives somewhere it can’t quit.”</blockquote>
+        <p class="ccard-cap">fewer repeat questions to senior engineers — the ramp tax Lore is built to remove</p>
+        <blockquote>Context that used to live in three people’s heads, kept somewhere it can’t quit.</blockquote>
       </article>
       <article class="ccard ccard-mid" data-card>
-        <div class="ccard-stat"><span data-count="6">0</span>/7</div>
-        <p class="ccard-cap">onboarding questions answered without pulling anyone off deep work</p>
-        <blockquote>“Setup was two integrations and done. Within a week, new hires were answering their own questions.”</blockquote>
+        <div class="ccard-stat"><span data-count="2">0</span>-click</div>
+        <p class="ccard-cap">setup — install the GitHub App and the Canon starts building from day one</p>
+        <blockquote>No agents to install, nothing to migrate. New hires start answering their own questions.</blockquote>
       </article>
       <article class="ccard" data-card>
         <div class="ccard-stat">&lt;<span data-count="2">0</span>s</div>
-        <p class="ccard-cap">from <code class="why">/why</code> to a sourced answer — instead of a Slack-archaeology dig</p>
-        <blockquote>“Every answer shows its work. That’s what made the team actually trust it.”</blockquote>
+        <p class="ccard-cap">from <code class="why">/lore</code> to a sourced answer — instead of a Slack-archaeology dig</p>
+        <blockquote>Every answer shows its work — the reason a team actually trusts it.</blockquote>
       </article>
     </div>
   </div>
@@ -358,7 +369,7 @@
       </details>
       <details class="qa" data-card>
         <summary>What does it read, exactly?<span class="qa-x"></span></summary>
-        <div class="qa-a"><p>GitHub pull requests, reviews, and merge discussions, plus the Slack channels you point it at. Linear, Jira, and Notion are on the roadmap. You control the scope, channel by channel.</p></div>
+        <div class="qa-a"><p>Merged GitHub pull requests (title + description), and any commit with a <code class="why">Why:</code> line via the Scribe. Full PR review threads, Slack, Linear, and Jira are on the roadmap. You control which repos are connected.</p></div>
       </details>
       <details class="qa" data-card>
         <summary>Is our code and data private?<span class="qa-x"></span></summary>
@@ -406,19 +417,19 @@
         Lore
       </a>
       <p>Institutional memory for engineering teams.</p>
-      <span class="status"><span class="status-dot"></span>All systems operational</span>
+      <span class="status"><span class="status-dot"></span>Private beta · onboarding design partners</span>
     </div>
     <div class="foot-col">
       <h5>Product</h5>
       <a href="#problem">Why Lore</a>
-      <a href="#product">Features</a>
+      <a href="#surfaces">Product</a>
       <a href="#how">How it works</a>
-      <a href="#integrations">Integrations</a>
+      <a href="docs.html">Docs</a>
     </div>
     <div class="foot-col">
       <h5>Company</h5>
-      <a href="#customers">Customers</a>
-      <a href="#faq">FAQ</a>
+      <a href="#customers">Outcomes</a>
+      <a href="docs.html">Docs</a>
       <a href="#cta">Request access</a>
     </div>
     <div class="foot-col">
@@ -429,7 +440,7 @@
     </div>
   </div>
   <div class="wrap foot-bottom">
-    <span>© 2026 Lore, Inc.</span>
+    <span>© 2026 Lore</span>
     <span class="foot-tag">Stop losing the <em>why.</em></span>
   </div>
 </footer>
