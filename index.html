@@ -322,6 +322,68 @@
   </div>
 </section>
 
+<!-- ======================= INTERACTIVE DEMO ======================= -->
+<style>
+  .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+  @media(max-width:820px){.demo-grid{grid-template-columns:1fr}}
+  .demo-card{background:#141310;border:1px solid #2a2720;border-radius:18px;overflow:hidden;box-shadow:0 24px 60px -30px rgba(0,0,0,.5);display:flex;flex-direction:column}
+  .demo-bar{display:flex;align-items:center;gap:7px;padding:12px 14px;border-bottom:1px solid #26231d;background:#1a1815}
+  .demo-dot{width:11px;height:11px;border-radius:50%}
+  .demo-dot.r{background:#ff5f57}.demo-dot.y{background:#febc2e}.demo-dot.g{background:#28c840}
+  .demo-title{margin-left:8px;font-family:var(--mono);font-size:12px;color:#8a857a}
+  .demo-body{padding:18px;min-height:232px}
+  .demo-log{display:flex;flex-direction:column;gap:12px}
+  .demo-msg{display:flex;flex-direction:column;gap:4px}
+  .demo-msg .who{font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:#6f6a5f}
+  .demo-msg .bub{background:#211e19;border-radius:10px;padding:9px 12px;color:#eae7df;font-size:13.5px;line-height:1.55}
+  .demo-msg.bot .bub{border-left:2px solid var(--orange)}
+  .demo-msg .bub.think{color:#8a857a;font-family:var(--mono);font-size:12.5px}
+  .demo-msg .sl{color:var(--orange);font-family:var(--mono)}
+  .prov{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .prov span{font-family:var(--mono);font-size:11px;color:#e0a75c;background:rgba(252,145,23,.12);padding:2px 8px;border-radius:6px}
+  .demo-chips{display:flex;flex-wrap:wrap;gap:7px;padding:0 18px 18px;margin-top:auto}
+  .demo-chip{font-size:12px;color:#b6b0a4;background:#1c1a15;border:1px solid #2c2921;border-radius:100px;padding:6px 12px;cursor:pointer;font-family:inherit;transition:all .2s}
+  .demo-chip:hover{border-color:var(--orange);color:var(--orange)}
+  .demo-chip.on{background:rgba(252,145,23,.14);border-color:var(--orange);color:#ffb757}
+  .demo-termbody{font-family:var(--mono);font-size:12.5px;color:#eae7df}
+  .demo-banner{color:var(--orange);font-size:9px;line-height:1.15;margin:0 0 14px;white-space:pre;overflow:hidden}
+  .demo-term-io .sl{color:var(--orange)}
+  .demo-term-io .caret{display:inline-block;width:7px;height:14px;background:var(--orange);vertical-align:-2px;animation:demoblink 1s steps(1) infinite}
+  .demo-term-io .ans{margin-top:10px;color:#d7d2c7;line-height:1.6}
+  @keyframes demoblink{50%{opacity:0}}
+</style>
+<section class="sec" id="see-it">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-fade>See it work</span>
+      <h2 class="h2 split-lines">The same memory, live in <em>both.</em></h2>
+      <p class="lede" data-fade>Watch a question get answered in the editor and the terminal — cited to the PR. Click a chip to ask your own.</p>
+    </div>
+
+    <div class="demo-grid">
+      <!-- editor -->
+      <div class="demo-card demo-editor">
+        <div class="demo-bar"><span class="demo-dot r"></span><span class="demo-dot y"></span><span class="demo-dot g"></span><span class="demo-title">Lore — VS Code</span></div>
+        <div class="demo-body"><div class="demo-log" id="edLog"></div></div>
+        <div class="demo-chips" id="edChips"></div>
+      </div>
+      <!-- terminal -->
+      <div class="demo-card demo-term">
+        <div class="demo-bar"><span class="demo-dot r"></span><span class="demo-dot y"></span><span class="demo-dot g"></span><span class="demo-title">lore — terminal</span></div>
+        <div class="demo-body demo-termbody">
+<pre class="demo-banner">  ██╗      ██████╗ ██████╗ ███████╗
+  ██║     ██╔═══██╗██╔══██╗██╔════╝
+  ██║     ██║   ██║██████╔╝█████╗
+  ██║     ██║   ██║██╔══██╗██╔══╝
+  ███████╗╚██████╔╝██║  ██║███████╗
+  ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝</pre>
+          <div class="demo-term-io" id="tmIO"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= CUSTOMERS / STATS ======================= -->
 <section class="sec" id="customers">
   <div class="wrap">
@@ -449,5 +511,71 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="script.js"></script>
+<script>
+/* ---- interactive editor + terminal demos ---- */
+(function () {
+  var DEMOS = [
+    { q: "why is auth stateless?", a: "We moved off server-side sessions after a Redis failover logged every user out at once. Short-lived JWTs plus refresh tokens removed that single point of failure.", src: ["PR #482", "#incident-042"] },
+    { q: "why Postgres and not Mongo?", a: "Our data is highly relational and we wanted real constraints and transactions. We'd been burned by schema drift on a prior Mongo project.", src: ["ADR-004"] },
+    { q: "why not microservices?", a: "At our size the operational overhead outweighed the benefits. We split out only payments, whose compliance and deploy cadence differ.", src: ["ADR-007", "PR #311"] },
+    { q: "did we build feature flags ourselves?", a: "Yes — boolean + percentage rollouts didn't justify per-seat pricing. The tripwire: if we ever need targeting rules, we buy instead.", src: ["ADR-011"] }
+  ];
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function esc(s) { return String(s).replace(/[&<>]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]; }); }
+  function prov(src) { return '<div class="prov">' + src.map(function (s) { return '<span>' + esc(s) + '</span>'; }).join('') + '</div>'; }
+
+  /* editor */
+  var edLog = document.getElementById('edLog'), edChips = document.getElementById('edChips');
+  var edTimer = null, edType = null;
+  if (edChips) DEMOS.forEach(function (d, i) {
+    var b = document.createElement('button'); b.className = 'demo-chip'; b.textContent = d.q;
+    b.onclick = function () { edPlay(i); }; edChips.appendChild(b);
+  });
+  function edActive(i) { if (edChips) for (var j = 0; j < edChips.children.length; j++) edChips.children[j].classList.toggle('on', j === i); }
+  function edPlay(i) {
+    clearTimeout(edTimer); clearInterval(edType); edActive(i);
+    var d = DEMOS[i];
+    edLog.innerHTML = '<div class="demo-msg user"><span class="who">You</span><div class="bub"><span class="sl">/lore</span> <span class="q"></span></div></div>';
+    var q = edLog.querySelector('.q');
+    function answer() {
+      var b = document.createElement('div'); b.className = 'demo-msg bot';
+      b.innerHTML = '<span class="who">Lore</span><div class="bub think">recalling…</div>';
+      edLog.appendChild(b);
+      setTimeout(function () {
+        var bub = b.querySelector('.bub'); bub.classList.remove('think');
+        bub.innerHTML = esc(d.a) + prov(d.src);
+        edTimer = setTimeout(function () { edPlay((i + 1) % DEMOS.length); }, 4200);
+      }, 650);
+    }
+    if (reduce) { q.textContent = d.q; answer(); return; }
+    var k = 0; edType = setInterval(function () { q.textContent = d.q.slice(0, ++k); if (k >= d.q.length) { clearInterval(edType); answer(); } }, 30);
+  }
+
+  /* terminal */
+  var tmIO = document.getElementById('tmIO'), tmTimer = null, tmType = null;
+  function tmPlay(i) {
+    clearTimeout(tmTimer); clearInterval(tmType);
+    var d = DEMOS[i];
+    tmIO.innerHTML = '<div class="line"><span class="sl">/lore</span> <span class="q"></span><span class="caret"></span></div>';
+    var q = tmIO.querySelector('.q'), caret = tmIO.querySelector('.caret');
+    function answer() {
+      if (caret) caret.remove();
+      var a = document.createElement('div'); a.className = 'ans'; a.innerHTML = esc(d.a) + prov(d.src); tmIO.appendChild(a);
+      tmTimer = setTimeout(function () { tmPlay((i + 1) % DEMOS.length); }, 4600);
+    }
+    if (reduce) { q.textContent = d.q; answer(); return; }
+    var k = 0; tmType = setInterval(function () { q.textContent = d.q.slice(0, ++k); if (k >= d.q.length) { clearInterval(tmType); answer(); } }, 34);
+  }
+
+  /* start when the section scrolls into view */
+  var started = false, sec = document.getElementById('see-it');
+  if (sec && edLog && tmIO) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting && !started) { started = true; edPlay(0); tmPlay(1); } });
+    }, { threshold: 0.2 });
+    io.observe(sec);
+  }
+})();
+</script>
 </body>
 </html>
